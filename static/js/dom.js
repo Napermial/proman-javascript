@@ -1,14 +1,38 @@
 // It uses data_handler.js to visualize elements
 let dom = {
     loadBoards: function () {
+        dataHandler.getBoards(this.showBoards)
         // retrieves boards and makes showBoards called
     },
     showBoards: function (boards) {
         // shows boards appending them to #boards div
         // it adds necessary event listeners also
+        for (let data of boards){
+            let board = document.createElement('div');
+            board.classList.add("board_title");
+            board.setAttribute('id', `${data.id}`);
+            board.innerHTML = `${data.title}`;
+            $("body").append(board);
+            dom.loadStatuses();
+            }
     },
+
+    loadStatuses: function() {
+        dataHandler.getStatuses(dom.showStatuses)
+    },
+
+    showStatuses: function(statuses){
+        for (let data of statuses){
+            let status = document.createElement('div');
+            status.classList.add("container");
+            status.setAttribute('id', `${data.id}`);
+            $(".board_title").append(status);
+        }
+    },
+
     loadCards: function (boardId) {
         // retrieves cards and makes showCards called
+
     },
     showCards: function (cards) {
         // shows the cards of a board

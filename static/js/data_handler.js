@@ -19,12 +19,22 @@ let dataHandler = {
     },
     getBoards: function (callback) {
         // the boards are retrieved and then the callback function is called with the boards
+        fetch('/api/boards')
+            .then((response) => response.json())
+            .then( function (boards) {
+                callback(boards);
+        });
     },
     getBoard: function (boardId, callback) {
         // the board is retrieved and then the callback function is called with the board
     },
     getStatuses: function (callback) {
         // the statuses are retrieved and then the callback function is called with the statuses
+        fetch('/api/statuses')
+            .then((response) => response.json())
+            .then( function (statuses) {
+                callback(statuses);
+        });
     },
     getStatus: function (statusId, callback) {
         // the status is retrieved and then the callback function is called with the status
