@@ -13,7 +13,7 @@ div{
 
 }
 
-#boards{
+.boards{
     background-color: gray;
     display: flex;
     border-radius: 0 0px 4px 4px;

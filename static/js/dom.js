@@ -11,10 +11,12 @@ let dom = {
             let board = document.createElement('div');
             board.classList.add("board_title");
             board.setAttribute('id', `${data.id}`);
-            board.innerHTML = `${data.title}`;
+            board.innerHTML = `<h2>${data.title}</h2>`;
             $("body").append(board);
-            dom.loadStatuses();
+            $("body").append(`<div class="boards"></div>`);
             }
+
+        dom.loadStatuses();
     },
 
     loadStatuses: function() {
@@ -26,7 +28,8 @@ let dom = {
             let status = document.createElement('div');
             status.classList.add("container");
             status.setAttribute('id', `${data.id}`);
-            $(".board_title").append(status);
+            status.innerHTML = `${data.name}`;
+            $(".boards").append(status);
         }
     },
 

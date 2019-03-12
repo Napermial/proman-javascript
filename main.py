@@ -10,6 +10,7 @@ def boards():
     ''' this is a one-pager which shows all the boards and cards '''
     return render_template('boards.html')
 
+
 @app.route("/api/boards")
 def get_data_boards():
     boards = data_manager.select_board()
