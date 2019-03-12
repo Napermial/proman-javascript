@@ -5,6 +5,9 @@
 .container{
     width: 25%;
     float: left;
+    background-color: #70796a;
+    margin: 10px;
+
 }
 
 div{

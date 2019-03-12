@@ -10,10 +10,10 @@ let dom = {
         for (let data of boards){
             let board = document.createElement('div');
             board.classList.add("board_title");
-            board.setAttribute('id', `${data.id}`);
+            board.setAttribute('id', `${data.id}b`);
             board.innerHTML = `<h2>${data.title}</h2>`;
             $("body").append(board);
-            $("body").append(`<div class="boards"></div>`);
+            $("body").append(`<div class="boards" id="${data.id}"></div>`);
             }
 
         dom.loadStatuses();
@@ -27,26 +27,29 @@ let dom = {
         for (let data of statuses){
             let status = document.createElement('div');
             status.classList.add("container");
-            status.setAttribute('name', `${data.id}`);
-            status.innerHTML = `${data.name}`;
+            status.setAttribute('id', `${data.id}s`);
+            status.innerHTML = `<h3>${data.name}</h3>`;
             $(".boards").append(status);
         }
+        dom.loadCards()
     },
 
-    loadCards: function (boardId) {
+    loadCards: function () {
         // retrieves cards and makes showCards called
-        dataHandler.getCards(dom.showCards())
+        dataHandler.getCards(dom.showCards);
 
     },
     showCards: function (cards) {
+        console.log(cards);
         // shows the cards of a board
         // it adds necessary event listeners also
         //<div class="card">hello</div>#}
         for (let data of cards){
             let card = document.createElement('div');
             card.classList.add('card');
-            card.innerHTML = `${cards.title}`;
-            $(`div[name=${card.status_id}]`).append(card);
+            card.setAttribute("id", `${data.id}c`);
+            card.innerHTML = `${data.title}`;
+            $(`#${data.board_id}`).children(`#${data.status_id}s`).append(card);
         }
     },
     appendToElement: function (elementToExtend, textToAppend, prepend = false) {
