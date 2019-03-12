@@ -36,6 +36,14 @@ let dataHandler = {
                 callback(statuses);
         });
     },
+    getCards: function (callback) {
+        // the statuses are retrieved and then the callback function is called with the statuses
+        fetch('/api/cards')
+            .then((response) => response.json())
+            .then( function (cards) {
+                callback(cards);
+        });
+    },
     getStatus: function (statusId, callback) {
         // the status is retrieved and then the callback function is called with the status
     },

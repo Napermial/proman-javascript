@@ -19,3 +19,13 @@ def select_statuses(cursor):
                    )
     statuses = cursor.fetchall()
     return statuses
+
+
+@database_common.connection_handler
+def select_cards(cursor):
+    cursor.execute("""
+                     SELECT * FROM cards;
+                      """,
+                   )
+    cards = cursor.fetchall()
+    return cards

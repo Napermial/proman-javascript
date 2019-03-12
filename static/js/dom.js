@@ -27,7 +27,7 @@ let dom = {
         for (let data of statuses){
             let status = document.createElement('div');
             status.classList.add("container");
-            status.setAttribute('id', `${data.id}`);
+            status.setAttribute('name', `${data.id}`);
             status.innerHTML = `${data.name}`;
             $(".boards").append(status);
         }
@@ -35,11 +35,19 @@ let dom = {
 
     loadCards: function (boardId) {
         // retrieves cards and makes showCards called
+        dataHandler.getCards(dom.showCards())
 
     },
     showCards: function (cards) {
         // shows the cards of a board
         // it adds necessary event listeners also
+        //<div class="card">hello</div>#}
+        for (let data of cards){
+            let card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `${cards.title}`;
+            $(`div[name=${card.status_id}]`).append(card);
+        }
     },
     appendToElement: function (elementToExtend, textToAppend, prepend = false) {
         // function to append new DOM elements (represented by a string) to an existing DOM element

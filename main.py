@@ -23,6 +23,12 @@ def get_data_statuses():
     return jsonify(statuses)
 
 
+@app.route("/api/cards")
+def get_data_cards():
+    cards = data_manager.select_cards()
+    return jsonify(cards)
+
+
 def main():
     app.run(debug=True)
 
