@@ -10,29 +10,36 @@ let dom = {
         for (let data of boards){
             let board = document.createElement('div');
             board.classList.add("board_title");
-            board.setAttribute('id', `${data.id}b`);
+            board.setAttribute('id', `board${data.id}`);
             board.innerHTML = `<h2>${data.title}</h2>`;
+            board.setAttribute('data-toggle', "collapse");
+            board.setAttribute('data-target', `#b${data.id}`);
+            board.setAttribute('aria-expanded', 'false');
+            board.setAttribute('aria-control', `#b${data.id}`);
+            board.setAttribute('type','button');
+            //board.addEventListener("click", dom.loadStatuses);
             $("body").append(board);
-            $("body").append(`<div class="boards" id="${data.id}"></div>`);
-            }
-
-        dom.loadStatuses();
+            $("body").append(`<div class="boards" id="b${data.id}"></div>`);
+        }
+        dom.loadStatuses()
     },
 
-    loadStatuses: function() {
-        dataHandler.getStatuses(dom.showStatuses)
+    loadStatuses: function(event) {
+        //let boardId = event.originalTarget.id;
+        dataHandler.getStatuses(dom.showStatuses);
     },
 
     showStatuses: function(statuses){
         for (let data of statuses){
             let status = document.createElement('div');
             status.classList.add("container");
-            status.setAttribute('id', `${data.id}s`);
+            status.setAttribute('id', `status${data.id}`);
             status.innerHTML = `<h3>${data.name}</h3>`;
-            $(".boards").append(status);
+            $(`.boards`).append(status);
         }
         dom.loadCards()
     },
+
 
     loadCards: function () {
         // retrieves cards and makes showCards called
@@ -49,7 +56,7 @@ let dom = {
             card.classList.add('card');
             card.setAttribute("id", `${data.id}c`);
             card.innerHTML = `${data.title}`;
-            $(`#${data.board_id}`).children(`#${data.status_id}s`).append(card);
+            $(`#b${data.board_id}`).children(`#status${data.status_id}`).append(card);
         }
     },
     appendToElement: function (elementToExtend, textToAppend, prepend = false) {

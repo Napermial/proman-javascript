@@ -25,7 +25,7 @@ let dataHandler = {
                 callback(boards);
         });
     },
-    getBoard: function (boardId, callback) {
+    getBoard: function (callback) {
         // the board is retrieved and then the callback function is called with the board
     },
     getStatuses: function (callback) {

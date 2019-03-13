@@ -1,11 +1,8 @@
-#boards {
-    background-color: green;
-}
 
 .container{
     width: 25%;
     float: left;
-    background-color: #70796a;
+    background-color: #6c913a;
     margin: 10px;
 
 }
@@ -17,13 +14,17 @@ div{
 }
 
 .boards{
-    background-color: gray;
+    background-color: #928567;
     display: flex;
     border-radius: 0 0px 4px 4px;
 }
 
 .board_title{
-    background-color: coral;
+    background-color: #296359;
     margin: 10px 10px 0 10px;
     border-radius: 4px 4px 0 0px;
+}
+
+h2{
+    display: inline;
 }
