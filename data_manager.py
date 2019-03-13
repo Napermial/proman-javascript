@@ -14,6 +14,7 @@ def select_board(cursor):
 @database_common.connection_handler
 def select_statuses(cursor):
     cursor.execute("""
+    
                      SELECT * FROM statuses;
                       """,
                    )

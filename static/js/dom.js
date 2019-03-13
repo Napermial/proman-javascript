@@ -19,7 +19,7 @@ let dom = {
             board.setAttribute('type','button');
             //board.addEventListener("click", dom.loadStatuses);
             $("body").append(board);
-            $("body").append(`<div class="boards" id="b${data.id}"></div>`);
+            $("body").append(`<div class="boards collapse" id="b${data.id}"></div>`);
         }
         dom.loadStatuses()
     },
