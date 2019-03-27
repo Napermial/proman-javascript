@@ -133,6 +133,10 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+/data
+.idea/
+.gitignore
+
 .idea/
 promandata_public_statuses.sql
 tables.sql
