@@ -9,6 +9,8 @@ app = Flask(__name__)
 def boards():
     if request.method == "POST":
         new_card = request.form["new_card"]
+        board_id = int(request.form['board_num'])
+        data_manager.add_new_card(new_card, board_id)
     return render_template('boards.html')
 
 

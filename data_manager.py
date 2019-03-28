@@ -30,3 +30,11 @@ def select_cards(cursor):
                    )
     cards = cursor.fetchall()
     return cards
+
+
+@database_common.connection_handler
+def add_new_card(cursor, new_card, board_id):
+    cursor.execute("""
+                     INSERT INTO cards(title, board_id, status_id, order_)
+                     VALUES (%(new_card)s, %(board_id)s, 1, 1)
+                      """, {'new_card': new_card, 'board_id': board_id})
