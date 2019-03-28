@@ -28,3 +28,9 @@ div{
 h2{
     display: inline;
 }
+
+.add_card{
+    background-color: #296359;
+    height: 35px;
+    margin-bottom: 10px;
+}

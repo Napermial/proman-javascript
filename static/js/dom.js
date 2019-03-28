@@ -44,15 +44,16 @@ let dom = {
 
             if(data.id === 1) {
                 let createNew = document.createElement('button');
-                createNew.classList.add('add_card');
+                createNew.classList.add('add_card', 'btn', 'btn-primary');
                 createNew.setAttribute('id', `button${data.id}`);
                 createNew.setAttribute('type', 'button');
+                createNew.setAttribute('data-toggle', 'modal');
+                createNew.setAttribute('data-target', '#newCard');
                 createNew.innerHTML = `<p>Create New Card</p>`;
                 $(`.container`).append(createNew);
 
                 }
             }
-        dom.createNewCard();
         dom.loadCards()
     },
 

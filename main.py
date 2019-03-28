@@ -1,13 +1,14 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import database_common
 import data_manager
 
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def boards():
-    ''' this is a one-pager which shows all the boards and cards '''
+    if request.method == "POST":
+        new_card = request.form["new_card"]
     return render_template('boards.html')
 
 
