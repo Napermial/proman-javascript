@@ -20,6 +20,10 @@ let dom = {
             //board.addEventListener("click", dom.loadStatuses);
             $("body").append(board);
             $("body").append(`<div class="boards collapse" id="b${data.id}"></div>`);
+
+
+
+
         }
         dom.loadStatuses()
     },
@@ -32,14 +36,40 @@ let dom = {
     showStatuses: function(statuses){
         for (let data of statuses){
             let status = document.createElement('div');
-            status.classList.add("container");
-            status.setAttribute('id', `status${data.id}`);
+            status.classList.add('container');
+            status.classList.add(`status${data.id}`);
+            //status.setAttribute('id', `status${data.id}`);
             status.innerHTML = `<h3>${data.name}</h3>`;
             $(`.boards`).append(status);
-        }
+
+            if(data.id === 1) {
+                let createNew = document.createElement('button');
+                createNew.classList.add('add_card');
+                createNew.setAttribute('id', `button${data.id}`);
+                createNew.setAttribute('type', 'button');
+                createNew.innerHTML = `<p>Create New Card</p>`;
+                $(`.container`).append(createNew);
+
+                }
+            }
+        dom.createNewCard();
         dom.loadCards()
     },
 
+    createNewCard: function() {
+        let buttons = document.querySelectorAll('.add_card');
+
+        for (let button of buttons) {
+            button.addEventListener('click', function() {
+                let card = document.createElement('div');
+                card.classList.add('card');
+                this.innerHTML.ContentEditable = true;
+                this.parentElement.append(card);
+
+
+            });
+        }
+    },
 
     loadCards: function () {
         // retrieves cards and makes showCards called
@@ -47,7 +77,7 @@ let dom = {
 
     },
     showCards: function (cards) {
-        console.log(cards);
+        //console.log(cards);
         // shows the cards of a board
         // it adds necessary event listeners also
         //<div class="card">hello</div>#}
@@ -56,7 +86,7 @@ let dom = {
             card.classList.add('card');
             card.setAttribute("id", `${data.id}c`);
             card.innerHTML = `${data.title}`;
-            $(`#b${data.board_id}`).children(`#status${data.status_id}`).append(card);
+            $(`#b${data.board_id}`).children(`.status${data.status_id}`).append(card);
         }
     },
     appendToElement: function (elementToExtend, textToAppend, prepend = false) {
