@@ -32,6 +32,12 @@ def get_data_cards():
     return jsonify(cards)
 
 
+@app.route('/new_board', methods=['post'])
+def create_new_board():
+    data_manager.create_new_board()
+    return render_template('boards.html')
+
+
 def main():
     app.run(debug=True)
 

@@ -11,7 +11,7 @@ let dom = {
             let board = document.createElement('div');
             board.classList.add("board_title");
             board.setAttribute('id', `board${data.id}`);
-            board.innerHTML = `<h2>${data.title}</h2>`;
+            board.innerHTML = `<h2>${data.id}. board</h2>`;
             board.setAttribute('data-toggle', "collapse");
             board.setAttribute('data-target', `#b${data.id}`);
             board.setAttribute('aria-expanded', 'false');

@@ -38,3 +38,11 @@ def add_new_card(cursor, new_card, board_id):
                      INSERT INTO cards(title, board_id, status_id, order_)
                      VALUES (%(new_card)s, %(board_id)s, 1, 1)
                       """, {'new_card': new_card, 'board_id': board_id})
+
+
+@database_common.connection_handler
+def create_new_board(cursor):
+    cursor.execute("""
+                     INSERT INTO boards(is_active)
+                     VALUES (True)
+                      """)
